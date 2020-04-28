@@ -22,6 +22,7 @@ export default class DrawerMenu extends Vue {
 
 <style lang="scss" scoped>
 .drawer {
+  display: none;
   width: 100%;
 }
 
@@ -30,14 +31,25 @@ ul {
 }
 
 li {
-  border: 5px ridge #ff8364;
+  border: 1px ridge #ff8364;
   border-radius: 5px;
   margin-bottom: 2px;
   width: 100%;
 }
 
+  a {
+    display: block;
+}
+
+
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: all 0.3s ease;
+}
+
+@media (max-width: 800px) {
+  .drawer {
+    display: block;
+  }
 }
 </style>
