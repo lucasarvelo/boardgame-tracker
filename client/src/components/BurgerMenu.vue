@@ -14,13 +14,12 @@
 
 <script lang="ts">
 import {
-  Component, Vue, Emit, Prop,
+  Component, Vue, Emit,
 } from 'vue-property-decorator';
 
 @Component
 export default class BurgerMenu extends Vue {
-  @Prop({ default: true })
-  collapsed!: boolean;
+  collapsed = true;
 
   @Emit('toggleBurger')
   toggleBurger() {
@@ -152,5 +151,6 @@ export default class BurgerMenu extends Vue {
   .movile-menu {
     display: block;
   }
+
 }
 </style>
