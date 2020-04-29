@@ -15,7 +15,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class AuboutBlock extends Vue {
+export default class AboutBlock extends Vue {
 }
 </script>
 
