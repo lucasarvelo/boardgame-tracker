@@ -7,6 +7,9 @@
     <div class="about">
       <AboutBlock />
     </div>
+    <div class="features">
+      <FeaturesBlock />
+    </div>
   </div>
 </template>
 
@@ -15,6 +18,7 @@
 import SignUpForm from '@/components/SignUpForm.vue';
 import MainImage from '@/components/MainImage.vue';
 import AboutBlock from '@/components/AboutBlock.vue';
+import FeaturesBlock from '@/components/FeaturesBlock.vue';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({
@@ -22,6 +26,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
     SignUpForm,
     MainImage,
     AboutBlock,
+    FeaturesBlock,
   },
 })
 export default class SignupForm extends Vue {
@@ -41,6 +46,11 @@ export default class SignupForm extends Vue {
 }
 
 .about {
+  box-shadow: inset 0px -1px 0px #DEDEDE;
+  padding: 50px;
+}
+
+.features {
   box-shadow: inset 0px -1px 0px #DEDEDE;
   padding: 50px;
 }
