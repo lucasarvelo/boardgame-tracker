@@ -74,6 +74,7 @@ export default class Nav extends Vue {
   border-radius: 10px;
   font-family: ibm_plex_sansbold;
   margin-right: 5px;
+  border-style: solid;
 }
 
 .nav-signUp {
@@ -85,6 +86,7 @@ export default class Nav extends Vue {
   border-radius: 10px;
   font-family: ibm_plex_sansbold;
   margin-left: 5px;
+  border-style: solid;
 }
 
 @media (max-width: 800px) {
