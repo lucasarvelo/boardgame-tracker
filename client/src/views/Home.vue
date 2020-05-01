@@ -13,6 +13,9 @@
     <div class="newsletter">
       <NewsletterBlock />
     </div>
+    <div class="footer">
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -23,6 +26,7 @@ import MainImage from '@/components/MainImage.vue';
 import AboutBlock from '@/components/AboutBlock.vue';
 import FeaturesBlock from '@/components/FeaturesBlock.vue';
 import NewsletterBlock from '@/components/NewsletterBlock.vue';
+import Footer from '@/components/Footer.vue';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({
@@ -32,6 +36,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
     AboutBlock,
     FeaturesBlock,
     NewsletterBlock,
+    Footer,
   },
 })
 export default class SignupForm extends Vue {
@@ -63,5 +68,10 @@ export default class SignupForm extends Vue {
 .newsletter {
   box-shadow: inset 0px -1px 0px #dedede;
   padding: 30px;
+}
+
+.footer {
+  box-shadow: inset 0px -1px 0px #dedede;
+  padding: 20px;
 }
 </style>
