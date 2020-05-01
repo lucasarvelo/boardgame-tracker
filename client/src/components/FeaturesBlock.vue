@@ -183,7 +183,6 @@ export default class FeaturesBlock extends Vue {}
 
 .feature {
     display: flex;
-    justify-content: center;
     align-items: center;
     text-align: left;
 }
