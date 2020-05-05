@@ -2,7 +2,7 @@
     <div class="footer-wrap">
         <div class="logo-footer">
             <Logo />
-            <p class="copyright">&copy; Copyright 2020 - Lucas Arvelo Boardgame Tracker</p>
+            <p class="copyright">&copy; Copyright 2020 - Lucas Arvelo <br/> Boardgame Tracker</p>
         </div>
         <div class="links-block">
             <div>
@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Logo from '@/components/Logo.vue';
+import Logo from '@/components/common/Logo.vue';
 
 @Component(
   {
@@ -51,6 +51,7 @@ export default class Fotter extends Vue {
     display: flex;
     justify-content: space-between;
     align-content: center;
+    padding: 20px;
 }
 
 .logo {

@@ -19,9 +19,9 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Logo from '@/components/Logo.vue';
-import BurgerMenu from '@/components/BurgerMenu.vue';
-import DrawerMenu from '@/components/DrawerMenu.vue';
+import Logo from '@/components/common/Logo.vue';
+import BurgerMenu from '@/components/layout/BurgerMenu.vue';
+import DrawerMenu from '@/components/layout/DrawerMenu.vue';
 
 @Component({
   components: {

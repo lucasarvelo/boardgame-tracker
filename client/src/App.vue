@@ -2,18 +2,19 @@
   <div id="app">
     <Nav />
     <router-view/>
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Logo from '@/components/Logo.vue';
-import Nav from '@/components/Nav.vue';
+import Nav from '@/components/layout/Nav.vue';
+import Footer from '@/components/layout/Footer.vue';
 
 @Component({
   components: {
-    Logo,
     Nav,
+    Footer,
   },
 })
 

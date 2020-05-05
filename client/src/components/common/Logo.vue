@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="logo" src="..\assets\img\Logo shadow.png" />
+    <img class="logo" src="..\..\assets\img\Logo shadow.png" />
   </div>
 </template>
 

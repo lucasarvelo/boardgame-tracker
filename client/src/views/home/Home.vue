@@ -13,20 +13,16 @@
     <div class="newsletter">
       <NewsletterBlock />
     </div>
-    <div class="footer">
-      <Footer />
-    </div>
   </div>
 </template>
 
 <script lang="ts">
 // @ is an alias to /src
-import SignUpForm from '@/components/SignUpForm.vue';
-import MainImage from '@/components/MainImage.vue';
-import AboutBlock from '@/components/AboutBlock.vue';
-import FeaturesBlock from '@/components/FeaturesBlock.vue';
-import NewsletterBlock from '@/components/NewsletterBlock.vue';
-import Footer from '@/components/Footer.vue';
+import SignUpForm from '@/views/home/SignUpForm.vue';
+import MainImage from '@/views/home/MainImage.vue';
+import AboutBlock from '@/views/home/AboutBlock.vue';
+import FeaturesBlock from '@/views/home/FeaturesBlock.vue';
+import NewsletterBlock from '@/views/home/NewsletterBlock.vue';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({
@@ -36,7 +32,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
     AboutBlock,
     FeaturesBlock,
     NewsletterBlock,
-    Footer,
   },
 })
 export default class SignupForm extends Vue {
@@ -68,10 +63,5 @@ export default class SignupForm extends Vue {
 .newsletter {
   box-shadow: inset 0px -1px 0px #dedede;
   padding: 30px;
-}
-
-.footer {
-  box-shadow: inset 0px -1px 0px #dedede;
-  padding: 20px;
 }
 </style>
