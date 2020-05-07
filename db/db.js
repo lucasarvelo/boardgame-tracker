@@ -2,9 +2,10 @@ module.exports = ({ url, port }, next) => {
   const mongoose = require('mongoose');
 
   mongoose
-    .connect('mongodb://' + url + ': ' + port + '/myapp', {
+    .connect('mongodb://' + url + ': ' + port + '/boardgametracker', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     })
     .catch((error) => console.error(error.name + ': ' + error.message));
 
