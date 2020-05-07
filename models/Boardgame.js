@@ -42,6 +42,10 @@ const boardgameSchema = new Schema({
   boardgameMechanics: {
     type: Array,
   },
+  createdOn: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Boardgame = mongoose.model('Boardgame', boardgameSchema);
