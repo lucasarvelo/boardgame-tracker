@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const auth = require('../middleware/auth');
 const secret = process.env.JWT_KEY;
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 /* GET user */
