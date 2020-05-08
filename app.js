@@ -9,6 +9,9 @@ const errorHandler = require('./middleware/errorHandler.js');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const hotRouter = require('./routes/hot');
+const searchRouter = require('./routes/search');
+const boardgameRouter = require('./routes/boardgame');
+
 const app = express();
 
 //Connect to mongo database
@@ -26,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/hot', hotRouter);
+app.use('/search', searchRouter);
+app.use('/boardgame', boardgameRouter);
 
 app.use(errorHandler);
 module.exports = app;
