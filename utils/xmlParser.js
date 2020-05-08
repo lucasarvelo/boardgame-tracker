@@ -11,7 +11,7 @@ const xmlToJson = (xml) => {
     if (error) return error;
     json = result;
   });
-  return json;
+  return json.items.item;
 };
 
 module.exports = xmlToJson;
