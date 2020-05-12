@@ -42,6 +42,9 @@ const boardgameSchema = new Schema({
   boardgameMechanics: {
     type: Array,
   },
+  boardgameFamily: {
+    type: Array,
+  },
   createdOn: {
     type: Date,
     default: Date.now,
