@@ -29,6 +29,11 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  boardgamesCollection: {
+    type: Schema.Types.ObjectId,
+    ref: 'Collection',
+    default: null,
+  },
 });
 
 userSchema.pre('save', async function (next) {
@@ -37,6 +42,7 @@ userSchema.pre('save', async function (next) {
   if (user.isModified('password')) {
     user.password = await bcrypt.hash(user.password, 8);
   }
+
   next();
 });
 
