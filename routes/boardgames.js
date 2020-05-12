@@ -3,13 +3,11 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const bggController = require('../utils/bggApiController');
 
-router.get('/:boardgameId', auth, async (req, res, next) => {
+router.get('/:boardgameIds', auth, async (req, res, next) => {
   if (req.error) return next(req.error);
-  const boardgameId = req.params.boardgameId;
+  const boardgameIds = req.params.boardgameIds;
 
-  if (isNaN(boardgameId)) return next('Invalid Id');
-
-  const jsonData = await bggController.getBoardgameInformation(boardgameId);
+  const jsonData = await bggController.getBoardgameInformation(boardgameIds);
 
   if (!jsonData)
     return res.status(404).send('Boardgame Not Found! Try another Id.');
