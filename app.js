@@ -11,7 +11,7 @@ const usersRouter = require('./routes/users');
 const hotRouter = require('./routes/hot');
 const searchRouter = require('./routes/search');
 const boardgameRouter = require('./routes/boardgames');
-
+const collectionsRouter = require('./routes/collections');
 const app = express();
 
 //Connect to mongo database
@@ -31,6 +31,7 @@ app.use('/users', usersRouter);
 app.use('/hot', hotRouter);
 app.use('/search', searchRouter);
 app.use('/boardgames', boardgameRouter);
+app.use('/collections', collectionsRouter);
 
 app.use(errorHandler);
 module.exports = app;
