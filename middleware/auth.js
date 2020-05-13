@@ -16,22 +16,20 @@ const auth = async (req, res, next) => {
       return next();
     }
 
-    User.findById(decoded.id)
-      .populate('boardgamesCollection')
-      .exec(function (err, user) {
-        if (err) {
-          req.error = 'There was a problem finding the user.';
-          return next();
-        }
-        if (!user) {
-          req.error = 'No user found.';
-          return next();
-        }
-
-        req.user = user;
-        req.token = token;
+    User.findById(decoded.id, (err, user) => {
+      if (err) {
+        req.error = 'There was a problem finding the user.';
         return next();
-      });
+      }
+      if (!user) {
+        req.error = 'User not found';
+        return next();
+      }
+
+      req.user = user;
+      req.token = token;
+      return next();
+    });
   });
 };
 
