@@ -7,7 +7,7 @@ const collectionSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  boardgames: [{ type: Schema.Types.ObjectId, ref: 'Boardgames' }],
+  boardgames: [{ type: Schema.Types.ObjectId, ref: 'Boardgame' }],
 });
 
 const Collection = mongoose.model('Collection', collectionSchema);
