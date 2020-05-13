@@ -6,6 +6,7 @@ module.exports = ({ url, port }, next) => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     })
     .catch((error) => console.error(error.name + ': ' + error.message));
 
