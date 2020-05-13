@@ -9,35 +9,121 @@ router.get('/', auth, async (req, res, next) => {
   if (req.error) return next(req.error);
   const user = req.user;
 
-  if (!user.boardgameCollection === null) {
-    Collection.create({ user: user._id }, (error, collection) => {
+  if (!user.boardgamesCollection) {
+    return Collection.create({ user: user._id }, (error, collection) => {
+      if (error) return next(error);
+
       user.boardgamesCollection = collection._id;
       user.save((error) => {
         if (error) return next({ error: error });
+        console.log('wtf');
 
-        res.send(user.boardgamesCollection);
+        return user.populate('boardgamesCollection', (error, user) => {
+          if (error) return next(error);
+
+          res.send(user.boardgamesCollection);
+        });
       });
     });
-  } else {
-    res.send(user.boardgamesCollection.populate('boardgames'));
   }
-});
 
-/* POST new game into users collection */
-router.post('/addBoardgame', auth, async (req, res, next) => {
-  if (req.error) return next(req.error);
-  const userCollection = req.user.boardgameCollection;
-  const boardgame = req.body.boardgame;
-
-  Boardgame.create(boardgame, (error, boardgame) => {
-    if (error) return next(error);
-
-    userCollection.boardgames.push(boardgame._id);
-    userCollection.save((error) => {
+  req.user.populate(
+    {
+      path: 'boardgamesCollection',
+      model: 'Collection',
+      populate: {
+        path: 'boardgames',
+        model: 'Boardgame',
+      },
+    },
+    (error, user) => {
       if (error) return next(error);
 
-      res.send(userCollection.populate('boardgames'));
+      res.send(user.boardgamesCollection);
+    },
+  );
+});
+
+/* POST new game into user collection */
+router.post('/boardgame', auth, async (req, res, next) => {
+  if (req.error) return next(req.error);
+  const boardgame = req.body;
+
+  /**
+   * Update the boardgame, if the boardgame id doesn't exist
+   * in the database, a new boardgame will be insert.
+   */
+
+  Boardgame.findOneAndUpdate(
+    { id: boardgame.id },
+    boardgame,
+    { upsert: true, setDefaultsOnInsert: true, new: true },
+    (error, boardgame) => {
+      if (error) return next(error);
+
+      /**
+       * Only add boardgame _id to the user collection if doesn's exist
+       */
+
+      return req.user.populate('boardgamesCollection', (error, user) => {
+        if (error) return next(error);
+        const userCollection = user.boardgamesCollection;
+
+        if (!userCollection.boardgames.includes(boardgame._id)) {
+          userCollection.boardgames.push(boardgame._id);
+          return userCollection.save((error) => {
+            if (error) return next(error);
+
+            return userCollection.populate(
+              'boardgames',
+              (error, collection) => {
+                if (error) return next(error);
+                res.send(collection);
+              },
+            );
+          });
+        }
+
+        userCollection.populate('boardgames', (error, collection) => {
+          if (error) return next(error);
+          res.send(collection);
+        });
+      });
+    },
+  );
+});
+
+router.delete('/boardgame', auth, (req, res, next) => {
+  if (req.error) return next(req.error);
+  const boardgameId = req.body.boardgame_id;
+
+  req.user.populate('boardgamesCollection', (error, user) => {
+    if (error) return next(error);
+    let userCollection = user.boardgamesCollection;
+
+    userCollection.boardgames = userCollection.boardgames.filter(
+      (boardgame) => boardgame._id !== boardgameId,
+    );
+
+    user.save((error, user) => {
+      if (error) return next(error);
+
+      user.populate(
+        {
+          path: 'boardgamesCollection',
+          model: 'Collection',
+          populate: {
+            path: 'boardgames',
+            model: 'Boardgame',
+          },
+        },
+        (error, user) => {
+          if (error) return next(error);
+          res.send(user.boardgamesCollection);
+        },
+      );
     });
   });
 });
+
 module.exports = router;
