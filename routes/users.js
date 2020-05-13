@@ -11,7 +11,20 @@ router.get('/', auth, async (req, res, next) => {
   // View logged in user profile
   if (req.error) return next(req.error);
 
-  res.send(req.user);
+  req.user.populate(
+    {
+      path: 'boardgamesCollection',
+      model: 'Collection',
+      populate: {
+        path: 'boardgames',
+        model: 'Boardgame',
+      },
+    },
+    (error, user) => {
+      if (error) return next(error);
+      res.send(user);
+    },
+  );
 });
 
 /* POST user registration */
