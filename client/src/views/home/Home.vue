@@ -18,7 +18,7 @@
 
 <script lang="ts">
 // @ is an alias to /src
-import SignUpForm from '@/views/home/SignUpForm.vue';
+import SignUpForm from '@/components/SignUpForm.vue';
 import MainImage from '@/views/home/MainImage.vue';
 import AboutBlock from '@/views/home/AboutBlock.vue';
 import FeaturesBlock from '@/views/home/FeaturesBlock.vue';
