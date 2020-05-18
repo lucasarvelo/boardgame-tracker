@@ -15,18 +15,24 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class AuboutBlock extends Vue {
+export default class AboutBlock extends Vue {
 }
 </script>
 
 <style lang="scss" scoped>
 div {
-    width: 45%;
+    width: 50%;
     margin: auto;
     text-align: justify;
 }
 
 p{
     font-weight: bold;
+}
+
+@media (max-width: 800px) {
+div{
+    width: 90%;
+}
 }
 </style>

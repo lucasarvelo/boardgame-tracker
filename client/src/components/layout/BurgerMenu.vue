@@ -43,6 +43,10 @@ export default class BurgerMenu extends Vue {
   box-shadow: none;
 }
 
+.burger-container:focus {
+  outline: none;
+}
+
 .burger-top,
 .burger-filler,
 .burger-bottom {
