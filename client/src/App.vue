@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Nav />
-    <router-view/>
+    <router-view isLogIn="isLogIn" />
     <Footer />
   </div>
 </template>
@@ -17,14 +17,15 @@ import Footer from '@/components/layout/Footer.vue';
     Footer,
   },
 })
-
 export default class App extends Vue {
   isLogIn = false;
+
+  userToken!: string;
 }
 </script>
 
 <style lang="scss">
-@import "./assets/fonts/fonts.css";
+@import './assets/fonts/fonts.css';
 
 #app {
   font-family: ibm_plex_sansregular, Helvetica, Arial, sans-serif;
@@ -33,5 +34,4 @@ export default class App extends Vue {
   text-align: center;
   color: #141414;
 }
-
 </style>
