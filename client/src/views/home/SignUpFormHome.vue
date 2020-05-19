@@ -8,11 +8,17 @@
       <input
         class="form-field"
         type="text"
-        id="fullName"
+        id="signup-fullName"
         placeholder="Full Name"
         aria-label="Full Name"
       />
-      <input class="form-field" type="email" id="email" placeholder="Email" aria-label="Email" />
+      <input
+        class="form-field"
+        type="email"
+        id="signup-email"
+        placeholder="Email"
+        aria-label="Email"
+        />
       <button type="submit">Sign Up</button>
     </form>
     <p class="legal">By joining, you agree to our Terms of Service and Privacy Policy.</p>
@@ -23,7 +29,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class SignupForm extends Vue {}
+export default class SignupFormHome extends Vue {}
 </script>
 
 <style scoped lang="scss">

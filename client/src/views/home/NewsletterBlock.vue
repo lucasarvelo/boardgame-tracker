@@ -1,17 +1,25 @@
 <template>
   <div class="container">
     <h1>Suscribe Newsletter</h1>
-    <p>Stay updated with the lastest boardgames Newsletter
-        and the develoment status of our Newsletter</p>
+    <p>
+      Stay updated with the lastest boardgames Newsletter
+      and the develoment status of our Newsletter
+    </p>
     <form>
       <input
         class="form-field"
         type="text"
-        id="fullName"
+        id="newsletter-fullName"
         placeholder="Full Name"
         aria-label="Full Name"
       />
-      <input class="form-field" type="email" id="email" placeholder="Email" aria-label="Email" />
+      <input
+        class="form-field"
+        type="email"
+        id="newsletter-email"
+        placeholder="Email"
+        aria-label="Email"
+      />
       <button type="submit">Suscribe</button>
     </form>
     <p class="legal">By suscribing, you agree to our Terms of Service and Privacy Policy.</p>

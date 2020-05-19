@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header">
-      <SignUpForm isLogIn="false" />
+      <SignUpFormHome isLogIn="false" />
       <MainImage filename="blood-rage-4311102_1280.jpg" />
     </div>
     <div class="about">
@@ -18,7 +18,7 @@
 
 <script lang="ts">
 // @ is an alias to /src
-import SignUpForm from '@/components/SignUpForm.vue';
+import SignUpFormHome from '@/views/home/SignUpFormHome.vue';
 import MainImage from '@/views/home/MainImage.vue';
 import AboutBlock from '@/views/home/AboutBlock.vue';
 import FeaturesBlock from '@/views/home/FeaturesBlock.vue';
@@ -27,14 +27,14 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({
   components: {
-    SignUpForm,
+    SignUpFormHome,
     MainImage,
     AboutBlock,
     FeaturesBlock,
     NewsletterBlock,
   },
 })
-export default class SignupForm extends Vue {
+export default class Home extends Vue {
   @Prop({ default: false })
   isLogIn!: boolean;
 }
