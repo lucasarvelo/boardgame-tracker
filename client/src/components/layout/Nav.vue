@@ -1,5 +1,15 @@
 <template>
   <div id="nav">
+    <Modal v-if="showModal" @close="showModal = false">
+      <h2 slot="header" v-if="modalType==='signIn'">Welcome back!</h2>
+      <h2 slot="header" v-else>Welcome</h2>
+      <SignUpForm v-if="modalType==='signUp'" slot="body" />
+      <SignInForm v-if="modalType==='signIn'" slot="body" />
+      <span
+        slot="footer"
+        class="legal"
+      >By access, you agree to our Terms of Service and Privacy Policy.</span>
+    </Modal>
     <Logo />
     <div class="links">
       <router-link
@@ -9,8 +19,8 @@
       >{{ route.name }}</router-link>
     </div>
     <div class="sign-buttons">
-      <button class="nav-signIn">SIGN IN</button>
-      <button class="nav-signUp">SIGN UP</button>
+      <button class="nav-signIn" v-on:click="updateShowModal('signIn')">SIGN IN</button>
+      <button class="nav-signUp" v-on:click="updateShowModal('signUp')">SIGN UP</button>
     </div>
     <BurgerMenu @toggleBurger="toggleMenu()"/>
     <DrawerMenu :collapsed="collapsed" />
@@ -22,16 +32,31 @@ import { Component, Vue } from 'vue-property-decorator';
 import Logo from '@/components/common/Logo.vue';
 import BurgerMenu from '@/components/layout/BurgerMenu.vue';
 import DrawerMenu from '@/components/layout/DrawerMenu.vue';
+import Modal from '@/components/common/Modal.vue';
+import SignInForm from '@/components/common/SignInForm.vue';
+import SignUpForm from '@/components/common/SignUpForm.vue';
 
 @Component({
   components: {
     Logo,
     BurgerMenu,
     DrawerMenu,
+    Modal,
+    SignInForm,
+    SignUpForm,
   },
 })
 export default class Nav extends Vue {
   collapsed = true;
+
+  modalType!: string;
+
+  showModal = false;
+
+  updateShowModal(modalType: string) {
+    this.modalType = modalType;
+    this.showModal = true;
+  }
 
   toggleMenu() {
     this.collapsed = !this.collapsed;
@@ -87,6 +112,13 @@ export default class Nav extends Vue {
   font-family: ibm_plex_sansbold;
   margin-left: 5px;
   border-style: solid;
+}
+
+.legal {
+  font-size: 0.6rem;
+  text-align: left;
+  margin-top: 0;
+  width: 100%;
 }
 
 @media (max-width: 800px) {
