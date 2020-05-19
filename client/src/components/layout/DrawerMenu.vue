@@ -5,6 +5,12 @@
         <li v-for="route in $router.options.routes" :key="route.path">
           <router-link :to="route.path">{{ route.name }}</router-link>
         </li>
+        <li>
+          <button class="nav-signIn">SIGN IN</button>
+        </li>
+        <li>
+          <button class="nav-signUp">SIGN UP</button>
+        </li>
       </ul>
     </div>
   </transition>
@@ -31,14 +37,43 @@ ul {
 }
 
 li {
-  border: 1px ridge #ff8364;
+  border: 1px solid #ff8364;
   border-radius: 5px;
   margin-bottom: 2px;
   width: 100%;
+  height: 39px;
+  line-height: 39px;
 }
 
-  a {
+ #nav a {
     display: block;
+    padding: 0;
+}
+
+.nav-signIn {
+  background-color: #f3f3f3;
+  color: #141414;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 5px;
+  font-family: ibm_plex_sansbold;
+  border-style: solid;
+  margin: 0;
+  border: none;
+}
+
+.nav-signUp {
+  background-color: #ff8364;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 5px;
+  font-family: ibm_plex_sansbold;
+  border-style: solid;
+  margin: 0;
+  border: none;
 }
 
 
